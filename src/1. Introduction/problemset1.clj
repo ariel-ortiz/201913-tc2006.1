@@ -8,6 +8,15 @@
   [n]
   (reduce *' (range 1 (inc n))))
 
+(defn duplicate
+  "Returns a new list with each element of lst duplicated."
+  [lst]
+  (if (empty? lst)
+    ()
+    (cons (first lst)
+          (cons (first lst)
+                (duplicate (rest lst))))))
+
 (deftest test-!
   (is (= 1
          (! 0)))
