@@ -11,14 +11,7 @@
 (defn duplicate
   "Returns a new list with each element of lst duplicated."
   [lst]
-  (loop [lst   lst
-         accum ()]
-    (if (empty? lst)
-      (reverse accum)
-      (recur (rest lst)
-             (cons (first lst)
-                   (cons (first lst)
-                         accum))))))
+  (mapcat #(list % %) lst))
 
 (deftest test-!
   (is (= 1
