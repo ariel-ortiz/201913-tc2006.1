@@ -21,10 +21,14 @@
 (defn fib
   "Returns the n-th element of the Fibonacci sequence."
   [n]
-  (if (<= n 1)
-    n
-    (+ (fib (- n 1))
-       (fib (- n 2)))))
+  (loop [a 0
+         b 1
+         i 0]
+    (if (= i n)
+      a
+      (recur b
+             (+ a b)
+             (inc i)))))
 
 (deftest test-!
   (is (= 1
@@ -60,5 +64,20 @@
   (is (= 525.21875 (pow 3.5 5)))
   (is (= 129746337890625 (pow 15 12)))
   (is (= 3909821048582988049 (pow 7 22))))
+
+(deftest test-fib
+  (is (= 0
+         (fib 0)))
+  (is (= 1
+         (fib 1)))
+  (is (= 1
+         (fib 2)))
+  (is (= 5
+         (fib 5)))
+  (is (= '(0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610
+            987 1597 2584 4181 6765)
+         (map fib (range 21))))
+  (is (= 267914296
+         (fib 42))))
 
 (run-tests)
