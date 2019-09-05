@@ -18,6 +18,14 @@
   [a b]
   (reduce *' (repeat b a)))
 
+(defn fib
+  "Returns the n-th element of the Fibonacci sequence."
+  [n]
+  (if (<= n 1)
+    n
+    (+ (fib (- n 1))
+       (fib (- n 2)))))
+
 (deftest test-!
   (is (= 1
          (! 0)))
