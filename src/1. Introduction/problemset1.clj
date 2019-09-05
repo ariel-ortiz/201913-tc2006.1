@@ -13,6 +13,11 @@
   [lst]
   (mapcat #(list % %) lst))
 
+(defn pow
+  "Raises a to the b-th power."
+  [a b]
+  (reduce *' (repeat b a)))
+
 (deftest test-!
   (is (= 1
          (! 0)))
@@ -34,5 +39,18 @@
          (duplicate '(a))))
   (is (= '(a a b b c c d d e e f f g g h h)
          (duplicate '(a b c d e f g h)))))
+
+(deftest test-pow
+  (is (= 1 (pow 0 0)))
+  (is (= 0 (pow 0 1)))
+  (is (= 1 (pow 5 0)))
+  (is (= 5 (pow 5 1)))
+  (is (= 125 (pow 5 3)))
+  (is (= 25 (pow -5 2)))
+  (is (= -125 (pow -5 3)))
+  (is (= 1024 (pow 2 10)))
+  (is (= 525.21875 (pow 3.5 5)))
+  (is (= 129746337890625 (pow 15 12)))
+  (is (= 3909821048582988049 (pow 7 22))))
 
 (run-tests)
