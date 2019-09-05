@@ -6,11 +6,7 @@
 (defn !
   "Returns the factorial of n."
   [n]
-  (loop [i      n
-         result 1]
-    (if (zero? i)
-      result
-      (recur (dec i) (*' result i)))))
+  (reduce *' (range 1 (inc n))))
 
 (deftest test-!
   (is (= 1
