@@ -21,11 +21,12 @@
 (defn fib
   "Returns the n-th element of the Fibonacci sequence."
   [n]
-  (first
-    (first
-      (drop n
-            (iterate (fn [[a b]] [b (+' a b)])
-                     [0 1])))))
+  (->>
+    [0 1]
+    (iterate (fn [[a b]] [b (+' a b)]))
+    (drop n)
+    first
+    first))
 
 (deftest test-!
   (is (= 1
