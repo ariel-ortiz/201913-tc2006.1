@@ -28,6 +28,15 @@
     first
     first))
 
+(defn swapper
+  [x y lst]
+  (map (fn [element]
+         (cond
+           (= x element) y
+           (= y element) x
+           :else element))
+       lst))
+
 (deftest test-!
   (is (= 1
          (! 0)))
