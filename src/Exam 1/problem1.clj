@@ -1,5 +1,5 @@
 ;==========================================================
-; Type your student ID and name here.
+; Solution.
 ;==========================================================
 
 (require '[clojure.test :refer [deftest is run-tests]])
@@ -8,7 +8,8 @@
 (defn buffoon?
   "Solves problem 1 from the first practical exam."
   [lst]
-  false)
+  (>= (first lst)
+      (apply max (rest lst))))
 
 ;==========================================================
 (deftest test-buffoon?

@@ -1,14 +1,19 @@
 ;==========================================================
-; Type your student ID and name here.
+; Solution.
 ;==========================================================
 
 (require '[clojure.test :refer [deftest is run-tests]])
+(require '[clojure.math.numeric-tower :refer [ceil]])
 
 ;==========================================================
 (defn run-percentage
   "Solves problem 2 from the first practical exam."
   [v n]
-  nil)
+  (let [total (* v n)
+        tenth (/ total 10)]
+    (->>
+      (range 1 10)
+      (map #(int (ceil (* % tenth)))))))
 
 ;==========================================================
 (deftest test-run-percentage
