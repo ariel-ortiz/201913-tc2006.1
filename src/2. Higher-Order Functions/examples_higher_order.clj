@@ -37,3 +37,13 @@
 (def f3 (composite f1 f2))
 (def f4 (composite f2 f1))
 (def f5 (composite f4 f3))
+
+(defn qsort
+  [lst]
+  (if (empty? lst)
+    ()
+    (let [less-list (filter #(< % (first lst)) (rest lst))
+          greater-or-equal-list (filter #(>= % (first lst)) (rest lst))]
+      (concat (qsort less-list)
+              (list (first lst))
+              (qsort greater-or-equal-list)))))
