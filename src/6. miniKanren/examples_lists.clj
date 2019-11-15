@@ -23,5 +23,19 @@
   ([[] []])
   ([[head . tail] result]
    (logic/fresh [temp]
-     (reverseo tail temp)
-     (logic/appendo temp [head] result))))
+     (logic/appendo temp [head] result)
+     (reverseo tail temp))))
+
+(logic/defne twino
+  "Logical function that succeeds if lst is a sequence
+  of two equal values"
+  [lst]
+  ([[x x]]))
+
+(logic/defne anti-twino
+  "Logical function that succeeds if lst is a sequence
+  of two items that are not equal"
+  [lst]
+  ([[x y]]
+   (logic/!= x y)))
+
